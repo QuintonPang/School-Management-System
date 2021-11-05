@@ -1,0 +1,48 @@
+<html>
+
+	<head>
+
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+		<title>School System</title>
+	
+		{% load static %}
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+		<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}" />
+		
+	</head>
+
+
+	<body>
+
+		<div id="main">
+
+			{% if user.is_authenticated and user.user_type == 1%}
+			You are a teacher!
+			<div id="teacherApp">
+	
+			</div>
+
+			{% elif user.is_authenticated and user.user_type == 2%}
+			You are a student!
+			<div id="studentApp">
+
+			</div>
+
+			{% else %}
+			Not logged in
+			{%endif%}
+
+		</div>
+
+		<!-- read file from bundled javascript of react-->
+
+		<script src="{%static 'frontend/main.js'%}"></script>
+	
+	</body>
+
+
+</html>
