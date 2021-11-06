@@ -61,3 +61,4 @@ class StudentClassSerializer(serializers.ModelSerializer):
         model = Teacher
 
         fields = '__all__' 
+
