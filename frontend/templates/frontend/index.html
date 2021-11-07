@@ -21,19 +21,19 @@
 		<div id="main">
 
 			{% if user.is_authenticated and user.user_type == 1%}
-			You are a teacher!
+			
+			<div id="studentApp">
+
+			</div>
+			{% elif user.is_authenticated and user.user_type == 2%}
+			
 			<div id="teacherApp">
 	
-			</div>
-
-			{% elif user.is_authenticated and user.user_type == 2%}
-			You are a student!
-			<div id="studentApp">
 
 			</div>
 
 			{% else %}
-			Not logged in
+			Please login <a href="/account/login">here</a>
 			{%endif%}
 
 		</div>
