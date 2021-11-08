@@ -7,7 +7,10 @@ urlpatterns = [
     path('teacher/registerQuiz', views.App),
     path('teacher/registerQuestion', views.App),
     path('teacher/registerClass', views.App),
-    path('teacher/searchStudent', views.App),
+
+    path('teacher/updateStudent', views.App),
+    path('teacher/updateQuiz', views.App),
+    path('teacher/updateQuestion', views.App),
 
     path('registerUser',views.registerUser),
     path('registerStudent',views.registerStudent),

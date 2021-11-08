@@ -13,7 +13,7 @@ urlpatterns = [
     # get
     path('getStudent/<int:student_id>',views.GetStudentView.as_view()),
     path('getQuiz/<int:quiz_id>',views.GetQuizView.as_view()),
-    path('getQuiz/<int:question_id>',views.GetQuestionView.as_view()),
+    path('getQuestion/<int:question_id>',views.GetQuestionView.as_view()),
 
     # update
     path('updateStudent/<int:pk>',views.UpdateStudent.as_view()),

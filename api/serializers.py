@@ -12,19 +12,27 @@ class UserSerializer(serializers.ModelSerializer):
 
 class TeacherSerializer(serializers.ModelSerializer):
 
+    username = serializers.CharField(source='user.username')
+
     class Meta:
 
         model = Teacher
 
         fields = '__all__' 
 
+        extra_fields=  ['username']
+
 class StudentSerializer(serializers.ModelSerializer):
+
+    username = serializers.CharField(source='user.username')
 
     class Meta:
 
         model = Student
 
-        fields = '__all__' 
+        fields =  '__all__'
+
+        extra_fields=  ['username']
 
 
 class QuizSerializer(serializers.ModelSerializer):
@@ -58,7 +66,7 @@ class StudentClassSerializer(serializers.ModelSerializer):
 
     class Meta:
 
-        model = Teacher
+        model = StudentClass
 
         fields = '__all__' 
 

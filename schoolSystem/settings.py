@@ -139,3 +139,4 @@ LOGIN_REDIRECT_URL = '/'
 
 # for iframe
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+

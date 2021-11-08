@@ -1,7 +1,7 @@
 <html>
     <form method="POST" class="form-group">
         {% csrf_token %}
-        {{form}}
+        {{form.as_p}}
         <button type="submit">REGISTER</button>
     
     </form>

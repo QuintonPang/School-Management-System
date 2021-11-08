@@ -76,7 +76,7 @@ class GetQuizView(generics.ListAPIView):
    
     def get_queryset(self):
 
-        student_id = self.kwargs['quiz_id']
+        quiz_id = self.kwargs['quiz_id']
         return Quiz.objects.filter(quiz_id=quiz_id)
 
     serializer_class = QuizSerializer 
@@ -100,14 +100,14 @@ class UpdateStudent(generics.UpdateAPIView):
     def update(self, request, *args, **kwargs):
         
         instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data) #, partial=True)
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Student updated successfully"})
 
         else:
-            return Response({"message": "failed", "details": serializer.errors})
+            return Response({"message": "Failed", "details": serializer.errors})
 
 class UpdateQuiz(generics.UpdateAPIView):
 
@@ -118,14 +118,14 @@ class UpdateQuiz(generics.UpdateAPIView):
     def update(self, request, *args, **kwargs):
         
         instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data) #, partial=True)
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Quiz updated successfully"})
 
         else:
-            return Response({"message": "failed", "details": serializer.errors})
+            return Response({"message": "Failed", "details": serializer.errors})
 
 class UpdateQuestion(generics.UpdateAPIView):
 
@@ -136,14 +136,14 @@ class UpdateQuestion(generics.UpdateAPIView):
     def update(self, request, *args, **kwargs):
         
         instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data) #, partial=True)
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Question updated successfully"})
 
         else:
-            return Response({"message": "failed", "details": serializer.errors})
+            return Response({"message": "Failed", "details": serializer.errors})
 
 ########## for deleting ##########
 

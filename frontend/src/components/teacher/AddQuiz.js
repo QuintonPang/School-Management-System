@@ -4,7 +4,7 @@ const AddQuiz = () =>{
 
     return(
         <>
-            <div style={{position:"relative",left:"100px"}}>
+            <div className="frame">
                 <h1> REGISTER QUIZ</h1>
                 <iframe src='/registerQuiz' height="50%" width="80%"/>
             </div>

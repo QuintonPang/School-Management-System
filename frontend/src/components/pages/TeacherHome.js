@@ -5,7 +5,10 @@ import AddStudent from '../teacher/AddStudent';
 import AddQuiz from '../teacher/AddQuiz';
 import AddQuestion from '../teacher/AddQuestion'
 import AddClass from '../teacher/AddClass';
-import SearchStudent from '../teacher/SearchStudent';
+import UpdateStudent from '../teacher/UpdateStudent';
+import UpdateQuiz from '../teacher/UpdateQuiz';
+import UpdateQuestion from '../teacher/UpdateQuestion';
+
 
 const TeacherHome = () =>{
 
@@ -26,8 +29,14 @@ const TeacherHome = () =>{
                     <Route path='/teacher/registerClass'>
                         <AddClass/>
                     </Route>
-                    <Route path='/teacher/searchStudent'>
-                        <SearchStudent/>
+                    <Route path='/teacher/updateStudent'>
+                        <UpdateStudent/>
+                    </Route>
+                    <Route path='/teacher/updateQuiz'>
+                        <UpdateQuiz/>
+                    </Route>
+                    <Route path='/teacher/updateQuestion'>
+                        <UpdateQuestion/>
                     </Route>
                 </Switch>
             </Router>

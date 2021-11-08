@@ -4,7 +4,7 @@ const AddClass = () =>{
 
     return(
         <>
-            <div style={{position:"relative",left:"100px"}}>
+            <div className="frame">
                 <h1> REGISTER CLASS</h1>
                 <iframe src='/registerStudentClass' height="50%" width="80%"/>
             </div>

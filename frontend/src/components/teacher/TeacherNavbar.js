@@ -155,26 +155,6 @@ const TeacherNavbar = () => {
           </ListItem>
         </List>
         <Divider />
-        <List>  
-         <ListItem button onClick={()=>history.push('/teacher/searchStudent')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-          <ListItemText primary="Search Student" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Search Quiz" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Search Question" />
-          </ListItem>
-        </List>
         <Divider />
         <List>  
           <ListItem button>
@@ -194,6 +174,26 @@ const TeacherNavbar = () => {
               <InboxIcon />
             </ListItemIcon>
             <ListItemText primary="Edit Question" />
+          </ListItem>
+        </List>
+        <List>  
+         <ListItem button onClick={()=>history.push('/teacher/updateStudent')}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+          <ListItemText primary="Update Student" />
+          </ListItem>
+          <ListItem button onClick={()=>history.push('/teacher/updateQuiz')}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Update Quiz" />
+          </ListItem>
+          <ListItem button onClick={()=>history.push('/teacher/updateQuestion')}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Update Question" />
           </ListItem>
         </List>
         <Divider />

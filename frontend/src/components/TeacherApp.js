@@ -22,4 +22,4 @@ export default TeacherApp;
 const teacherAppDiv = document.getElementById('teacherApp');
 
 //render in the div
-render(<TeacherApp/>,teacherAppDiv);
+if(teacherAppDiv) render(<TeacherApp/>,teacherAppDiv);
