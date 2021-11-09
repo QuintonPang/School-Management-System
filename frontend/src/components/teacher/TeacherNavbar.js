@@ -157,7 +157,7 @@ const TeacherNavbar = () => {
         <Divider />
         <Divider />
         <List>  
-          <ListItem button>
+          <ListItem button onClick={()=>history.push('/teacher/studentList')}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
@@ -169,7 +169,7 @@ const TeacherNavbar = () => {
             </ListItemIcon>
           <ListItemText primary="Edit Quiz" />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={()=>history.push('/teacher/quizList')}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>

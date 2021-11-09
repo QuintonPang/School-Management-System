@@ -8,6 +8,9 @@ urlpatterns = [
     path('teacher/registerQuestion', views.App),
     path('teacher/registerClass', views.App),
 
+    path('teacher/studentList',views.App),
+    path('teacher/quizList',views.App),
+
     path('teacher/updateStudent', views.App),
     path('teacher/updateQuiz', views.App),
     path('teacher/updateQuestion', views.App),

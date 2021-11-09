@@ -8,7 +8,8 @@ import AddClass from '../teacher/AddClass';
 import UpdateStudent from '../teacher/UpdateStudent';
 import UpdateQuiz from '../teacher/UpdateQuiz';
 import UpdateQuestion from '../teacher/UpdateQuestion';
-
+import StudentList from '../teacher/StudentList'
+import QuizList from "../teacher/QuizList";
 
 const TeacherHome = () =>{
 
@@ -37,6 +38,12 @@ const TeacherHome = () =>{
                     </Route>
                     <Route path='/teacher/updateQuestion'>
                         <UpdateQuestion/>
+                    </Route>
+                    <Route path='/teacher/studentList'>
+                        <StudentList/>
+                    </Route>
+                    <Route path='/teacher/quizList'>
+                        <QuizList/>
                     </Route>
                 </Switch>
             </Router>
