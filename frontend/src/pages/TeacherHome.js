@@ -1,15 +1,16 @@
 import React from 'react';
-import TeacherNavbar from '../teacher/TeacherNavbar';
+import TeacherNavbar from '../components/teacher/TeacherNavbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import AddStudent from '../teacher/AddStudent';
-import AddQuiz from '../teacher/AddQuiz';
-import AddQuestion from '../teacher/AddQuestion'
-import AddClass from '../teacher/AddClass';
-import UpdateStudent from '../teacher/UpdateStudent';
-import UpdateQuiz from '../teacher/UpdateQuiz';
-import UpdateQuestion from '../teacher/UpdateQuestion';
-import StudentList from '../teacher/StudentList'
-import QuizList from "../teacher/QuizList";
+import AddStudent from '../components/teacher/AddStudent';
+import AddQuiz from '../components/teacher/AddQuiz';
+import AddQuestion from '../components/teacher/AddQuestion'
+import AddClass from '../components/teacher/AddClass';
+import UpdateStudent from '../components/teacher/UpdateStudent';
+import UpdateQuiz from '../components/teacher/UpdateQuiz';
+import UpdateQuestion from '../components/teacher/UpdateQuestion';
+import StudentList from '../components/teacher/StudentList'
+import QuizList from "../components/teacher/QuizList";
+import DeleteQuestion from "../components/teacher/DeleteQuestion";
 
 const TeacherHome = () =>{
 
@@ -44,6 +45,12 @@ const TeacherHome = () =>{
                     </Route>
                     <Route path='/teacher/quizList'>
                         <QuizList/>
+                    </Route>
+                    <Route path='/teacher/quizList'>
+                        <QuizList/>
+                    </Route>
+                    <Route path='/teacher/deleteQuestion'>
+                        <DeleteQuestion/>
                     </Route>
                 </Switch>
             </Router>

@@ -7,13 +7,12 @@ from api.models import Student, User, Quiz, StudentClass, Question, Teacher
 
 class RegisterUserForm(forms.ModelForm):
 
+    password=forms.CharField(widget=forms.PasswordInput())
+    confirm_password=forms.CharField(widget=forms.PasswordInput())
+    
     class Meta:
-
-        #name of table
-
         model=User
-
-        fields="__all__"
+        fields='__all__'
 
 class RegisterTeacherForm(forms.ModelForm):
 

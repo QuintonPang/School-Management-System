@@ -136,6 +136,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 #}
 
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/account/login'
 
 # for iframe
 X_FRAME_OPTIONS = 'SAMEORIGIN'

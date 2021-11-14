@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { render } from 'react-dom';
-import TeacherHome from './pages/TeacherHome.js';
+import TeacherHome from '../pages/TeacherHome.js';
 
 const TeacherApp = () =>{
 

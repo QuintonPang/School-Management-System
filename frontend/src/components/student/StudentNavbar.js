@@ -129,84 +129,14 @@ const TeacherNavbar = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem button onClick={()=>history.push('/teacher/registerStudent')}>
+          <ListItem button onClick={()=>history.push('/student/answerQuiz')}>
             <ListItemIcon> 
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Add Student" />
-          </ListItem>
-          <ListItem button onClick={()=>history.push('/teacher/registerQuiz')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add Quiz" />
-          </ListItem>
-          <ListItem button onClick={()=>history.push('/teacher/registerQuestion')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add Question" />
-          </ListItem>
-          <ListItem button onClick={()=>history.push('/teacher/registerClass')}> 
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add Class" />
+            <ListItemText primary="Answer Quiz" />
           </ListItem>
         </List>
-        <Divider />
-        <Divider />
-        <List>  
-          <ListItem button onClick={()=>history.push('/teacher/studentList')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Edit Student" />
-          </ListItem>
-          <ListItem button onClick={()=>history.push('/teacher/quizList')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Edit Question" />
-          </ListItem>
-        </List>
-        <List>  
-         <ListItem button onClick={()=>history.push('/teacher/updateStudent')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-          <ListItemText primary="Update Student" />
-          </ListItem>
-          <ListItem button onClick={()=>history.push('/teacher/updateQuiz')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Update Quiz" />
-          </ListItem>
-          <ListItem button onClick={()=>history.push('/teacher/updateQuestion')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Update Question" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button onClick={()=>history.push('/teacher/deleteQuestion')}>  
-            <ListItemIcon>
-              <InboxIcon sx={{color:"red"}} />
-            </ListItemIcon>
-            <ListItemText primary="Delete Quiz"  />
-          </ListItem>
-        </List>
-        <List sx={{position:"absolute",bottom:"0px"}} >
-          <ListItem  button onClick={()=>{ window.location.href="/account/logout"; alert("Logged out successfully"); }} >  
-              <ListItemIcon>
-                <InboxIcon sx={{color:"red"}} />
-              </ListItemIcon>
-              <ListItemText primary="Log Out"  />
-          </ListItem>
-        </List>
+        
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />

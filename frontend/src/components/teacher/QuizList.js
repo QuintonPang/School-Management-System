@@ -34,10 +34,7 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.quiz}
         </TableCell>
-        <TableCell align="right">{quiz.quiz_name}</TableCell>
-        <TableCell align="right"></TableCell>
-        <TableCell align="right"></TableCell>
-        <TableCell align="right"></TableCell>
+        <TableCell align="left">{quiz.quiz_name}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -49,32 +46,32 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Question ID</TableCell>
-                    <TableCell>Choice A</TableCell>
-                    <TableCell align="right">Choice B</TableCell>
-                    <TableCell align="right">Choice C</TableCell>
-                    <TableCell align="right">Choice D</TableCell>
-                    <TableCell align="right">Correct Choice</TableCell>
+                    <TableCell align="left">Question ID</TableCell>
+                    <TableCell align="left">Choice A</TableCell>
+                    <TableCell align="left">Choice B</TableCell>
+                    <TableCell align="left">Choice C</TableCell>
+                    <TableCell align="left">Choice D</TableCell>
+                    <TableCell align="left">Correct Choice</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                     <TableRow>
-                        <TableCell>
+                        <TableCell align="left">
                             {row.question_id}
                         </TableCell>
-                        <TableCell>
+                        <TableCell align="left"> 
                             {row.answer_a}
                         </TableCell>
-                        <TableCell>
+                        <TableCell align="left">
                             {row.answer_b}
                         </TableCell>
-                        <TableCell>
+                        <TableCell align="left">
                             {row.answer_c}
                         </TableCell>
-                        <TableCell>
+                        <TableCell align="left">
                             {row.answer_d}
                         </TableCell>
-                        <TableCell>
+                        <TableCell align="left">
                             {row.correct_choice}
                         </TableCell>
                     </TableRow>
@@ -109,8 +106,8 @@ export default function QuizList() {
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Quiz ID</TableCell>
-            <TableCell align="right">Quiz Name</TableCell>
+            <TableCell align="left">Quiz ID</TableCell>
+            <TableCell align="left">Quiz Name</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

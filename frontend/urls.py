@@ -15,6 +15,10 @@ urlpatterns = [
     path('teacher/updateQuiz', views.App),
     path('teacher/updateQuestion', views.App),
 
+    path('teacher/deleteQuestion',views.App),
+
+    path('student/answerQuiz', views.App),
+
     path('registerUser',views.registerUser),
     path('registerStudent',views.registerStudent),
     path('registerTeacher',views.registerTeacher),

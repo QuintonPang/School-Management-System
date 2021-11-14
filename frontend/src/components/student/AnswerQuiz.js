@@ -80,7 +80,7 @@ TablePaginationActions.propTypes = {
 
 export default function StudentList() {
   useEffect(()=>{
-      fetch('/api/getAllStudents')
+      fetch('/api/getAllQuizzes')
       .then(res=>res.json())
       .then(data=>setRows(data));
       

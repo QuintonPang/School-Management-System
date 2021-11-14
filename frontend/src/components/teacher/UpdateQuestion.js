@@ -73,7 +73,7 @@ const UpdateQuestion = ()=>{
         <div className="frame">
             <div>
                 ID: <input type="number" onChange={(e)=>setSearchId(e.target.value)} />
-                <button onClick={()=>{searchQuestion()}}> SEARCH </button>
+                <button onClick={(e)=>searchId===""?e.preventDefault():searchQuestion()}> SEARCH </button>
                 {question_id}
             </div>
             {Object.keys(result).length!==0&&(

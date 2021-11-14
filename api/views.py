@@ -160,4 +160,5 @@ class DeleteQuestion(generics.DestroyAPIView):
         instance = self.get_object()
         instance.delete()
     
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({"message":"Deleted Question Successfully!","status":status.HTTP_204_NO_CONTENT})
+    

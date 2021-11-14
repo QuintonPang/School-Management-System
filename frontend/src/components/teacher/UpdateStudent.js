@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const UpdateStudent = ()=>{
-    const [ searchId, setSearchId ] = useState(null);
+    const [ searchId, setSearchId ] = useState("");
     const [ result, setResult ] = useState({});
     const [ classes, setClasses ] = useState(null);
     const [ updatedClass, setUpdatedClass ] = useState(null);
@@ -63,6 +63,11 @@ const UpdateStudent = ()=>{
 					alert(data.message);
 				})
     }
+
+    const handleFirstButton = () =>{
+        searchStudent(); 
+        searchClass();
+    }
     
     const {student_id, username, student_class:cls, user } = result;
 
@@ -70,7 +75,7 @@ const UpdateStudent = ()=>{
         <div className="frame">
             <div>
                 ID: <input type="number" onChange={(e)=>setSearchId(e.target.value)} />
-                <button onClick={()=>{searchStudent(); searchClass();}}> SEARCH </button>
+                <button onClick={(e)=>searchId===""?e.preventDefault():handleFirstButton()}> SEARCH </button>
                 {username}
             </div>
             {classes&&(

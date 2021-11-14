@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterUserForm, RegisterQuestionForm, RegisterQuizForm, RegisterStudentClassForm, RegisterStudentForm, RegisterTeacherForm
+from django.contrib.auth import logout
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
@@ -18,6 +20,8 @@ def registerUser(request):
 
         if form.is_valid():
     
+            form.password = make_password(form.cleaned_data['password'])
+            #TODO: save encrypted password
             form.save()
             
             return redirect("/account/login")
@@ -119,5 +123,10 @@ def registerStudentClass(request):
         form = RegisterStudentClassForm()
 
     return render(request,"registration/register.html",{"form":form})
+
+def logout_view(request):
+    
+    logout(request)
+    # Redirect to a success page.
 
 

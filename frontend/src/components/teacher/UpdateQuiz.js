@@ -63,7 +63,7 @@ const UpdateQuiz = ()=>{
         <div className="frame">
             <div>
                 ID: <input type="number" onChange={(e)=>setSearchId(e.target.value)} />
-                <button onClick={()=>{searchQuiz()}}> SEARCH </button>
+                <button onClick={(e)=>searchId===""?e.preventDefault():searchQuiz()}> SEARCH </button>
                 {quiz_id}
             </div>
             {Object.keys(result).length!==0&&(

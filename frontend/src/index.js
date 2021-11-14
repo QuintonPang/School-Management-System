@@ -1,2 +1,2 @@
-import TeacherApp from './components/TeacherApp';
-import StudentApp from './components/StudentApp';
+import TeacherApp from './apps/TeacherApp';
+import StudentApp from './apps/StudentApp';
