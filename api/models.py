@@ -78,10 +78,10 @@ class Student(models.Model):
 class Result(models.Model):
 
     result_id = models.AutoField(primary_key=True)
-    result_question = models.ForeignKey(Question,on_delete=models.CASCADE)
     result_student = models.ForeignKey(Student,on_delete=models.CASCADE)
+    result_question = models.ForeignKey(Question,on_delete=models.CASCADE)
     result_student_answer = models.CharField(max_length=50)
-    isCorrect = models.BooleanField()
+    is_correct = models.BooleanField()
     
     def __str__(self):
-        return self.result_student + " " + self.result_question
+        return self.result_student.user.username + ": " + self.result_question.question

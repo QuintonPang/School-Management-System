@@ -58,7 +58,7 @@ class ResultSerializer(serializers.ModelSerializer):
 
     class Meta:
 
-        model = Teacher
+        model = Result
 
         fields = '__all__' 
 

@@ -15,9 +15,16 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { useHistory } from 'react-router-dom';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import QuizIcon from '@mui/icons-material/Quiz';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import ClassIcon from '@mui/icons-material/Class';
+import PersonIcon from '@mui/icons-material/Person';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
+import DeleteIcon from '@mui/icons-material/Delete';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -131,25 +138,25 @@ const TeacherNavbar = () => {
         <List>
           <ListItem button onClick={()=>history.push('/teacher/registerStudent')}>
             <ListItemIcon> 
-              <InboxIcon />
+              <PersonAddIcon />
             </ListItemIcon>
             <ListItemText primary="Add Student" />
           </ListItem>
           <ListItem button onClick={()=>history.push('/teacher/registerQuiz')}>
             <ListItemIcon>
-              <InboxIcon />
+              <QuizIcon />
             </ListItemIcon>
             <ListItemText primary="Add Quiz" />
           </ListItem>
           <ListItem button onClick={()=>history.push('/teacher/registerQuestion')}>
             <ListItemIcon>
-              <InboxIcon />
+              <QuestionAnswerIcon />
             </ListItemIcon>
             <ListItemText primary="Add Question" />
           </ListItem>
           <ListItem button onClick={()=>history.push('/teacher/registerClass')}> 
             <ListItemIcon>
-              <InboxIcon />
+              <ClassIcon />
             </ListItemIcon>
             <ListItemText primary="Add Class" />
           </ListItem>
@@ -159,33 +166,33 @@ const TeacherNavbar = () => {
         <List>  
           <ListItem button onClick={()=>history.push('/teacher/studentList')}>
             <ListItemIcon>
-              <InboxIcon />
+              <PersonIcon />
             </ListItemIcon>
-            <ListItemText primary="Edit Student" />
+            <ListItemText primary="Student List" />
           </ListItem>
           <ListItem button onClick={()=>history.push('/teacher/quizList')}>
             <ListItemIcon>
-              <InboxIcon />
+              <QuizIcon />
             </ListItemIcon>
-            <ListItemText primary="Edit Question" />
+            <ListItemText primary="Question List" />
           </ListItem>
         </List>
         <List>  
          <ListItem button onClick={()=>history.push('/teacher/updateStudent')}>
             <ListItemIcon>
-              <InboxIcon />
+              <PersonSearchIcon />
             </ListItemIcon>
           <ListItemText primary="Update Student" />
           </ListItem>
           <ListItem button onClick={()=>history.push('/teacher/updateQuiz')}>
             <ListItemIcon>
-              <InboxIcon />
+              <ContentPasteSearchIcon />
             </ListItemIcon>
             <ListItemText primary="Update Quiz" />
           </ListItem>
           <ListItem button onClick={()=>history.push('/teacher/updateQuestion')}>
             <ListItemIcon>
-              <InboxIcon />
+              <ContentPasteSearchIcon />
             </ListItemIcon>
             <ListItemText primary="Update Question" />
           </ListItem>
@@ -194,7 +201,7 @@ const TeacherNavbar = () => {
         <List>
           <ListItem button onClick={()=>history.push('/teacher/deleteQuestion')}>  
             <ListItemIcon>
-              <InboxIcon sx={{color:"red"}} />
+              <DeleteIcon sx={{color:"red"}} />
             </ListItemIcon>
             <ListItemText primary="Delete Quiz"  />
           </ListItem>
@@ -202,7 +209,7 @@ const TeacherNavbar = () => {
         <List sx={{position:"absolute",bottom:"0px"}} >
           <ListItem  button onClick={()=>{ window.location.href="/account/logout"; alert("Logged out successfully"); }} >  
               <ListItemIcon>
-                <InboxIcon sx={{color:"red"}} />
+                <LogoutIcon sx={{color:"red"}} />
               </ListItemIcon>
               <ListItemText primary="Log Out"  />
           </ListItem>

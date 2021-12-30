@@ -1,48 +1,49 @@
 <html>
-
+	
 	<head>
-
+		
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-
+		
 		<title>School System</title>
-	
+		
 		{% load static %}
-
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         
 		<link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}" />
 		
 	</head>
-
+	
 
 	<body>
-
+		
 		<div id="main">
-
+			
 			{% if user.is_authenticated and user.user_type == 1%}
 			
 			<div id="studentApp">
-
 			</div>
 			{% elif user.is_authenticated and user.user_type == 2%}
 			
 			<div id="teacherApp">
-	
-
+				
+				
 			</div>
-
+			
 			{% else %}
 			Please login <a href="/account/login">here</a>
 			{%endif%}
-
+			
 		</div>
-
+		
 		<!-- read file from bundled javascript of react-->
-
+		
 		<script src="{%static 'frontend/main.js'%}"></script>
-	
+		
+		<input type ="hidden" id="username" value={{user.get_username}} >
+
 	</body>
-
-
-</html>
+	
+	
+	</html>

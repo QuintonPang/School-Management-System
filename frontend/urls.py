@@ -18,7 +18,9 @@ urlpatterns = [
     path('teacher/deleteQuestion',views.App),
 
     path('student/answerQuiz', views.App),
-
+    path('student/answerQuiz/<int:id>', views.App),
+    path('student/getResult/<int:id>', views.App),
+    
     path('registerUser',views.registerUser),
     path('registerStudent',views.registerStudent),
     path('registerTeacher',views.registerTeacher),

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from "@mui/material";
+import Typography from '@mui/material/Typography';
 
 const DeleteQuestion = () =>{
 
@@ -45,6 +46,7 @@ const DeleteQuestion = () =>{
     
     return(
         <div className="frame">
+            <Typography variant="h4">Delete Question</Typography>
            Question ID: <input onChange={(e)=>setQuizId(e.target.value)}/> <br/>
            <Button variant="outlined" color="error" onClick={()=>handleDeleteQuestion()}>DELETE</Button>
         </div>

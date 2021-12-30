@@ -90,6 +90,16 @@ class GetQuestionView(generics.ListAPIView):
 
     serializer_class = QuestionSerializer 
 
+class GetResultView(generics.ListAPIView):
+   
+    def get_queryset(self):
+  
+        student_id = self.kwargs['student_id']
+        return Result.objects.filter(result_student=student_id)
+
+    serializer_class = ResultSerializer 
+
+
 ########## for updates ##########
 class UpdateStudent(generics.UpdateAPIView):
 
@@ -161,4 +171,32 @@ class DeleteQuestion(generics.DestroyAPIView):
         instance.delete()
     
         return Response({"message":"Deleted Question Successfully!","status":status.HTTP_204_NO_CONTENT})
+
+##### for post method ######
+
+class AnswerQuestionView(generics.CreateAPIView):
+
+
+    #serializer_class is necessary, name cannot be changed
+
+    serializer_class = ResultSerializer
     
+    def post(self, request):
+        
+        serializer = self.serializer_class(data=request.data)
+       
+        if serializer.is_valid():
+
+
+            result_id = serializer.data.get('result_id')
+            result_student = Student.objects.filter(student_id = serializer.data.get('result_student'))[0]
+            result_student_answer = serializer.data.get('result_student_answer')
+            result_question = Question.objects.filter(question_id = serializer.data.get('result_question'))[0]
+            is_correct = serializer.data.get('is_correct')
+            
+            result = Result(result_id=result_id, result_student=result_student,result_student_answer=result_student_answer, result_question=result_question, is_correct=is_correct)
+            result.save()
+
+            return Response({"message": "Question answered successfully"})
+
+        return Response({"message": "Question answered unsuccessfully"})

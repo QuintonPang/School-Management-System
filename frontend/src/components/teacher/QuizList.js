@@ -16,7 +16,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 
 function Row(props) {
-  const { row,quizId, quiz } = props;
+  const { rows , quiz } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -32,7 +32,7 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.quiz}
+          {quiz.quiz_id}
         </TableCell>
         <TableCell align="left">{quiz.quiz_name}</TableCell>
       </TableRow>
@@ -55,7 +55,9 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow>
+                  {rows.map(row=>{
+                    return(
+                    <TableRow key={row.question_id}>
                         <TableCell align="left">
                             {row.question_id}
                         </TableCell>
@@ -74,7 +76,8 @@ function Row(props) {
                         <TableCell align="left">
                             {row.correct_choice}
                         </TableCell>
-                    </TableRow>
+                    </TableRow>)
+                    })}
                 </TableBody>
               </Table>
             </Box>
@@ -101,6 +104,8 @@ export default function QuizList() {
         
     },[])
   return (
+    <>
+      <Typography sx={{position:"relative", marginLeft:"100px"}} variant="h4">Quiz List</Typography>
     <TableContainer className="frame" component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
@@ -114,16 +119,17 @@ export default function QuizList() {
           {
               quizzes.map((quiz)=>{
                 return(
-                  questions.filter((question)=>question.quiz===quiz.quiz_id).map((question)=>{
-                  return(
-                      <Row key={question.question_id} row={question} quiz={quiz}/>
-                  )
-                  })
 
-              )})
+                     <Row key={quiz.quiz_id} rows={questions.filter((question)=>question.quiz===quiz.quiz_id)} quiz={quiz}/>
+          
+                  
+                )
+
+              })
             }
         </TableBody>
       </Table>
     </TableContainer>
+    </>
   );
 }

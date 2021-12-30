@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Typography from '@mui/material/Typography';
 
 const UpdateQuiz = ()=>{
     const [ searchId, setSearchId ] = useState(null);
@@ -61,6 +62,7 @@ const UpdateQuiz = ()=>{
 
     return(
         <div className="frame">
+              <Typography variant="h4">Search/Update Quiz</Typography>
             <div>
                 ID: <input type="number" onChange={(e)=>setSearchId(e.target.value)} />
                 <button onClick={(e)=>searchId===""?e.preventDefault():searchQuiz()}> SEARCH </button>

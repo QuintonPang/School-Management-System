@@ -6,7 +6,7 @@ const AddQuestion = () =>{
         <>
             <div  className="frame">
                 <h1> REGISTER QUESTION</h1>
-                <iframe src='/registerQuestion' height="150%" width="80%"/>
+                <iframe src='/registerQuestion' height="175%" width="80%"/>
             </div>
         </>
     )

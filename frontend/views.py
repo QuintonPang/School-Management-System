@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
-def App(request):
+def App(request, id=None):
 
     return render(request,'frontend/index.html')
 
@@ -19,11 +19,14 @@ def registerUser(request):
         
 
         if form.is_valid():
-    
-            form.password = make_password(form.cleaned_data['password'])
-            #TODO: save encrypted password
-            form.save()
-            
+                
+            # returns object but object not saved into database
+            edited_form = form.save(commit=False)
+
+            edited_form.password = make_password(form.cleaned_data['password'])
+
+            edited_form.save()
+
             return redirect("/account/login")
 
     else:
@@ -123,6 +126,8 @@ def registerStudentClass(request):
         form = RegisterStudentClassForm()
 
     return render(request,"registration/register.html",{"form":form})
+
+
 
 def logout_view(request):
     

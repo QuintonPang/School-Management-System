@@ -16,6 +16,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { useEffect } from 'react';
+import Typography from '@mui/material/Typography';
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -103,6 +104,9 @@ export default function StudentList() {
   };
 
   return (
+    <>
+     <Typography sx={{position:"relative", marginLeft:"100px"}} variant="h4">Student List</Typography>
+    
     <TableContainer sx={{ maxWidth: "90vw" }} className="frame" component={Paper}>
       <Table sx={{ maxWidth: "90vw" }} aria-label="custom pagination table">
         <TableBody>
@@ -151,5 +155,6 @@ export default function StudentList() {
         </TableFooter>
       </Table>
     </TableContainer>
+    </>
   );
 }

@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -16,8 +17,8 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
-import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -81,90 +82,141 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default function StudentList() {
+
+const ResultList = () =>{
+
   const history = useHistory();
+  const { id } = useParams();
+  
+  const [ results, setResults ] = useState([]);
+  const [ questions, setQuestions ] = useState([]);
+
+   // using jQuery
+   function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+useEffect(()=>{
+    fetch('/api/getAllQuestions')
+    .then(res=>res.json())
+    .then(data=>setQuestions(data));
+    
+ 
+  },[questions]);
+
   useEffect(()=>{
-      fetch('/api/getAllQuizzes')
-      .then(res=>res.json())
-      .then(data=>setRows(data));
-      
-  },[]);
-  const [rows, setRows] = React.useState([]);
+    fetch("/api/getResult/"+id)
+    .then(res=>res.json())
+    .then(data=>{
+        setResults(data)
+    })
+
+  },[id,results]) 
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [ values, setValues ] = React.useState([]);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-  page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  page > 0 ? Math.max(0, (1 + page) * rowsPerPage - results.length) : 0;
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+      setPage(newPage);
+    };
+    
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  return (
-    <TableContainer sx={{ maxWidth: "90vw" }} className="frame" component={Paper}>
+    
+    return ( questions!==undefined&&(
+        <>
+  <TableContainer sx={{ maxWidth: "90vw" }} className="frame" component={Paper}>
       <Table sx={{ maxWidth: "90vw" }} aria-label="custom pagination table">
-        <TableBody>
-        <TableRow>
+      <TableBody>
+      <TableRow>
               <TableCell component="th" scope="row">
-                Quiz ID
+              No.
               </TableCell>
               <TableCell align="left">
-                Quiz Name
+              Question
               </TableCell>
               <TableCell align="left">
-                Answer
+              Correct Answer
               </TableCell>
-            </TableRow>
+              <TableCell align="left">
+              Your Answer
+              </TableCell>
+          </TableRow>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <TableRow key={row.quiz_id}>
+          ? results.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          : results
+          ).map((row,i) => (
+          <TableRow style={row.is_correct?{backgroundColor:"green"}:{backgroundColor:"red"}} key={row.result_id}>
               <TableCell component="th" scope="row">
-                {row.quiz_id}
+              {i+1}.
               </TableCell>
               <TableCell align="left">
-                {row.quiz_name}
+                    {questions.filter((q)=>q.question_id==row.result_question)[0]!==undefined&&questions.filter((q)=>q.question_id==row.result_question)[0].question}
               </TableCell>
-              <TableCell align="left">
-                <Button variant="outlined" onClick={()=>history.push("/student/answerQuiz/"+row.quiz_id)} >Answer</Button>
+              <TableCell >
+                    {questions.filter((q)=>q.question_id==row.result_question)[0]!==undefined&&questions.filter((q)=>q.question_id==row.result_question)[0].correct_choice.toUpperCase()}
               </TableCell>
-            </TableRow>
+              <TableCell >
+                    {row.result_student_answer}
+              </TableCell>
+          </TableRow>
           ))}
-
           {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
+          <TableRow style={{ height: 53 * emptyRows }}>
               <TableCell colSpan={6} />
-            </TableRow>
+          </TableRow>
           )}
-        </TableBody>
-        <TableFooter>
+      </TableBody>
+      <TableFooter>
           <TableRow>
-            <TablePagination
+          <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
-              count={rows.length}
+              count={results.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
-                inputProps: {
+              inputProps: {
                   'aria-label': 'rows per page',
-                },
-                native: true,
+              },
+              native: true,
               }}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
-            />
+          />
           </TableRow>
-        </TableFooter>
+      </TableFooter>
       </Table>
-    </TableContainer>
+  </TableContainer>
+  <Grid container justifyContent={"center"} sx={{padding:"10px"}}>
+      <Button  variant="outlined" onClick={()=>history.push("/student/answerQuiz")} >Return</Button>
+  </Grid>
+</>)
+
   );
 }
+
+
+
+export default ResultList;
